@@ -2,6 +2,8 @@ import gameplay.common.PathCalculatorLocal;
 import gameplay.game.ScenarioCreator;
 import gameplay.treeobjects.Node;
 
+import javax.ejb.Stateless;
+
 @Stateless
 public class PathCalculatorBean implements PathCalculatorLocal {
     ScenarioCreator scenarioCreator;

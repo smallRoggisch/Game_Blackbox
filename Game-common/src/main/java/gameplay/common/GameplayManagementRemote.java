@@ -1,5 +1,7 @@
 package gameplay.common;
 
+import javax.ejb.Remote;
+
 @Remote
 public interface GameplayManagementRemote {
     

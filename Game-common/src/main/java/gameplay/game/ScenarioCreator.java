@@ -121,4 +121,15 @@ public class ScenarioCreator {
 
         return nodeList;
     }
+
+    public Node getFirstNode(long scenarioID) {
+        if(scenarioID==0){
+            return scenarioOne.get(0);
+        }
+        else if(scenarioID==1){
+            return scenarioTwo.get(0);
+        }
+        //TODO exeptions
+        return null;
+    }
 }

@@ -1,4 +1,4 @@
-import blackbox.gameplay.common.PathCalculatorLocal;
+import gameplay.common.PathCalculatorLocal;
 import gameplay.game.ScenarioCreator;
 import gameplay.treeobjects.Node;
 

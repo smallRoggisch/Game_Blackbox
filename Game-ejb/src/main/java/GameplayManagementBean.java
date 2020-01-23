@@ -9,39 +9,46 @@ public class GameplayManagementBean implements GameplayManagementRemote {
     PathCalculatorLocal pathCalculator;
     StatisticCalculatorLocal statisticCalculator;
     StatisticScenarioPath currentPath;
+    long userID;
 
-    public void receiveMsgFromClient(String pMsg) {
-        Node lastNode=pathCalculator.getNodeWithID(currentPath.getLastNode());
-        List<Answer> answerList=lastNode.getAnswerList();
-        for(Answer answer:answerList){
-            if(answer.hasMessage(pMsg)){
-                receiveMsgFromClient(answer.getAnswerID());
-                return;
-            }
-        }
+    @Override
+    public void startScenario(long scenarioID, long userID) {
+       currentPath=new StatisticScenarioPath();
+       this.userID=userID;
+       Node currentNode=pathCalculator.getStartNodeOfScenario(scenarioID);
+       currentPath.add((currentNode.getID()));
+       analyseNode(currentNode);
     }
 
-
-    public void receiveMsgFromClient(long pID) {
+     @Override
+    public void receiveMsgFromClient(long pAnswerID) {
         long lastNode=currentPath.getLastNode();
-        Node currentNode=pathCalculator.getFollowingNode(lastNode,pID);
+        Node currentNode=pathCalculator.getFollowingNode(lastNode,pAnswerID);
         currentPath.add(currentNode.getID());
+        analyseNode(currentNode);
+    }
+
+    /**
+     * Überpüft den Knoten auf Endknoten, speichert den aktuellen Gamepath in der Statistik, und leitet die Nachrichten und Antworten weiter
+     * @param currentNode
+     */
+    private void analyseNode(Node currentNode){
         if(currentNode.isEnd()) {
             statisticCalculator.completeCurrentGamepath(currentPath);
-            sendMsgToClient("Ende erreicht", Messagetype.Text);
+            sendMsgToClient(new NodeMessage(Messagetype.Text,"Ende erreicht",0));
         }
         else {
             statisticCalculator.updateCurrentGamepath(currentPath);
-            /*for(NodeMessage msg:currentNode.getMessageToClientList()){
+            /*
+            for(NodeMessage msg:currentNode.getMessageToClientList()){
                 msg.startTimeout();
-                sendMsgToClient(msg.getMessageString(),msg.getMessgetype());
+                sendMsgToClient(msg);
             }*/
             sendAnswersToClient(currentNode.getAnswerList());
         }
-
     }
 
-    private void sendMsgToClient(String pMsg, Messagetype ptype){
+    private void sendMsgToClient(NodeMessage msg){
 
         //TODO
     }

@@ -10,7 +10,6 @@
         <module name="UserManagement-common" />
         <module name="UserManagement-ejb" />
         <module name="Game-ejb" />
-        <module name="usermanagement.common.UserManagement-ejb" />
         <module name="Game-common" />
       </profile>
     </annotationProcessing>

@@ -90,7 +90,7 @@ public class ScenarioCreator {
         Answer answer2 = new Answer("Supi, worum geht's?", a2);
         answersForCurrentNode.add(answer2);
         LinkedList<NodeMessage> messageList = new LinkedList<NodeMessage>();
-        NodeMessage message1 = new NodeMessage(Messagetype.Text, "Hey Joe, ich hab da einen neuen Fall für dich.");
+        NodeMessage message1 = new NodeMessage(Messagetype.Text, "Hey Joe, ich hab da einen neuen Fall für dich.", "");
         messageList.add(message1);
         ausgangssituation = new Node(messageList, answersForCurrentNode);
         answersForCurrentNode.clear();
@@ -105,13 +105,78 @@ public class ScenarioCreator {
         answersForCurrentNode.add(answer3);
         Answer answer4 = new Answer("Okay ich schicke schonmal einen Spuren- und Kontaktdroiden los. Leitest du mir die Akte weiter?", skd56);
         answersForCurrentNode.add(answer4);
-        message1 = new NodeMessage(Messagetype.Text, "Eine junge Frau hat soeben einen toten Mann in ihrer Wohnung gefunden. Sie steht jetzt unter Schock. Jemand muss zu ihr, sie befragen und die Spuren müssen dort gesichert werden.");
+        message1 = new NodeMessage(Messagetype.Text, "Eine junge Frau hat soeben einen toten Mann in ihrer Wohnung gefunden. Sie steht jetzt unter Schock. Jemand muss zu ihr, sie befragen und die Spuren müssen dort gesichert werden.", "");
         messageList.add(message1);
         a2 = new Node(messageList, answersForCurrentNode);
         answersForCurrentNode.clear();
         messageList.clear();
 
-        //
+        //Ending1
+        message1 = new NodeMessage(Messagetype.Text, "Es wurde zu spät gehandelt: Circa 30 Minuten nach dem ANruf bei der Polizei hat sich Frau Müller erinnert, was passiert ist. Sie geriet in Panik und setzte die Wohnung in Flammen. So konnte der Mord und das Motiv nicht aufgeklärt werden.", "" );
+        messageList.add(message1);
+        ending1 = new Node(messageList, answersForCurrentNode);
+        messageList.clear();
+
+        //KD42
+        answer1 = new Answer("Droide beruhige die Frau", c1);
+        answersForCurrentNode.add(answer1);
+        answer2 = new Answer("Befrage sie und finde heraus, an was sie sich erinnert.", c2);
+        answersForCurrentNode.add(answer2);
+        message1 = new NodeMessage(Messagetype.Text, "Klar. Danke, dass du das übernimmst! Halte mich auf dem Laufenden.", "");
+        messageList.add(message1);
+        NodeMessage message2 = new NodeMessage(Messagetype.Image, "", 30, "");
+        messageList.add(message2);
+        NodeMessage message3 = new NodeMessage(Messagetype.Text, "Ich bin bei Frau Müller angekommen.","");
+        messageList.add(message3);
+        NodeMessage messgae4 = new NodeMessage(Messagetype.Image, "", "");
+        messageList.add(messgae4);
+        kd42 = new Node(messageList, answersForCurrentNode);
+        answersForCurrentNode.clear();
+        messageList.clear();
+
+        //SD87
+        answer1 = new Answer("Schaue dir den Tartort genauer an und entnehme Proben für das Labor", c3);
+        answersForCurrentNode.add(answer1);
+        message1 = new NodeMessage(Messagetype.Text, "Klar. Danke, dass du das übernimmst! Halte mich auf dem Laufenden.", "");
+        messageList.add(message1);
+        message2 = new NodeMessage(Messagetype.Image, "", 30, "");
+        messageList.add(message2);
+        message3 = new NodeMessage(Messagetype.Text, "Ich bin bei Frau Müller angekommen.", "");
+        messageList.add(message3);
+        messgae4 = new NodeMessage(Messagetype.Image, "", "");
+        messageList.add(messgae4);
+        sd87 = new Node(messageList, answersForCurrentNode);
+        answersForCurrentNode.clear();
+        messageList.clear();
+
+        //SKD56
+        answer1 = new Answer("Droide beruhige die Frau", c1);
+        answersForCurrentNode.add(answer1);
+        answer2 = new Answer("Befrage sie und finde heraus, an was sie sich erinnert.", c2);
+        answersForCurrentNode.add(answer2);
+        answer3 = new Answer("Schaue dir den Tartort genauer an und entnehme Proben für das Labor", c3);
+        answersForCurrentNode.add(answer3);
+        message1 = new NodeMessage(Messagetype.Text, "Klar. Danke, dass du das übernimmst! Halte mich auf dem Laufenden.", "");
+        messageList.add(message1);
+        message2 = new NodeMessage(Messagetype.Image, "", 30, "");
+        messageList.add(message2);
+        message3 = new NodeMessage(Messagetype.Text, "Ich bin bei Frau Müller angekommen.", "");
+        messageList.add(message3);
+        messgae4 = new NodeMessage(Messagetype.Image, "", "");
+        messageList.add(messgae4);
+        skd56 = new Node(messageList, answersForCurrentNode);
+        answersForCurrentNode.clear();
+        messageList.clear();
+
+        //Ending2
+        message1 = new NodeMessage(Messagetype.Text, "Beim Versuch die Frau zu beruhigen wurde Frau Müller hysterisch und schlug den Druiden gegen die Wand, sodass er beschädigt wurde und die Verbindung abbrach. Während ein Neustart versucht wurde, hat die Frau alle Beweise beseitigt und einen Brand gelegt. So konnte der Mord und das Motiv nicht aufgeklärt werden.", "");
+        messageList.add(message1);
+        ending2 = new Node(messageList, answersForCurrentNode);
+        answersForCurrentNode.clear();
+        messageList.clear();
+
+        
+
         return nodeList;
     }
 

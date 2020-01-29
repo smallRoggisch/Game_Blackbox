@@ -9,7 +9,8 @@ public class User {
     private static long userIdCounter = 0;
     @Id
     private long userID;
-    //private String username; //nicht gebraucht, username ist email
+    @Column
+    private String username;
     @Column
     private String email;
     @Column

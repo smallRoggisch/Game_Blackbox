@@ -16,20 +16,24 @@ public class NodeMessage {
     private String message;
     @Column
     private int timeout;
+    @Column
+    private String sender;
 
-    public NodeMessage(Messagetype type, String message, int timeout)
+    public NodeMessage(Messagetype type, String message, int timeout, String sender)
     {
         this.nodeMessageID = nodeMessageIdCounter++;
         this.type = type;
         this.message = message;
         this.timeout = timeout;
+        this.sender = sender;
     }
 
-    public NodeMessage(Messagetype type, String message)
+    public NodeMessage(Messagetype type, String message, String sender)
     {
         this.nodeMessageID = nodeMessageIdCounter++;
         this.type = type;
         this.message = message;
+        this.sender = sender;
         this.timeout = 0;
     }
     public Messagetype getMessgetype() {

@@ -35,7 +35,7 @@ public class GameplayManagementBean implements GameplayManagementRemote {
     private void analyseNode(Node currentNode){
         if(currentNode.isEnd()) {
             statisticCalculator.completeCurrentGamepath(currentPath);
-            sendMsgToClient(new NodeMessage(Messagetype.Text,"Ende erreicht",0));
+            sendMsgToClient(new NodeMessage(Messagetype.Text,"Ende erreicht",0, ""));
         }
         else {
             statisticCalculator.updateCurrentGamepath(currentPath);

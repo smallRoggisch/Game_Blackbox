@@ -25,4 +25,8 @@ public class Answer {
     public boolean hasMessage(String pMsg) {
         return answerMessage.equals(pMsg);
     }
+
+    public Node getAnswerNode(){
+        return answerNode;
+    }
 }

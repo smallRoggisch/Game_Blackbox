@@ -2,6 +2,9 @@ import gameplay.common.StatisticCalculatorLocal;
 import gameplay.common.StatisticCalculatorRemote;
 import gameplay.treeobjects.StatisticScenarioPath;
 
+import javax.ejb.Stateless;
+
+@Stateless
 public class StatisticCalculatorBean implements StatisticCalculatorRemote, StatisticCalculatorLocal {
 
 

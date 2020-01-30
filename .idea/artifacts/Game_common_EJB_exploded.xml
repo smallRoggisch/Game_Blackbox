@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ejb" name="Game-common:EJB exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Game_common_EJB_exploded.jar</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Game-common/ejb/EJB" />
+      <element id="javaee-facet-classes" facet="Game-common/ejb/EJB" />
+    </root>
+  </artifact>
+</component>

@@ -3,5 +3,20 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd"
              version="6">
+<application-name id="test">
+
+</application-name>
+    <module>
+        <ejb>Game_common_EJB_exploded.jar</ejb>
+    </module>
+    <!--module>
+        <ejb>Game-ejb</ejb>
+    </module>
+    <module>
+        <ejb>UserManagement-ejb</ejb>
+    </module>
+    <module>
+        <ejb>UserManagement-common</ejb>
+    </module-->
 
 </application>

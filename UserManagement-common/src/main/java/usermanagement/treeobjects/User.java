@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.*;
 
 @Entity
+@EntityListeners(UserPersistencyLog.class)
 public class User {
 
     private static long userIdCounter = 0;

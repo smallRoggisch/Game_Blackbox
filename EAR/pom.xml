@@ -15,21 +15,25 @@
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>UserManagement-ejb</artifactId>
+            <type>ejb</type>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>UserManagement-common</artifactId>
+            <type>ejb</type>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>Game-common</artifactId>
+            <type>ejb</type>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>Game-ejb</artifactId>
+            <type>ejb</type>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

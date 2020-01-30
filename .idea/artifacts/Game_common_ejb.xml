@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="ejb-jar" name="Game-common:ejb">
-    <output-path>$PROJECT_DIR$/out/artifacts/Game_common_ejb.jar</output-path>
-    <root id="archive" name="Game-common_ejb.jar">
-      <element id="artifact" artifact-name="Game-common:ejb exploded" />
-    </root>
-  </artifact>
-</component>

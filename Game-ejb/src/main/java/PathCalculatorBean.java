@@ -1,18 +1,19 @@
 import gameplay.common.PathCalculatorLocal;
+import gameplay.exceptions.NodeNotFoundException;
 import gameplay.game.ScenarioCreator;
 import gameplay.treeobjects.Answer;
 import gameplay.treeobjects.Node;
 
 import javax.ejb.Singleton;
-import javax.ejb.Stateless;
 import java.util.List;
 
-@Stateless
+@Singleton
 public class PathCalculatorBean implements PathCalculatorLocal {
     ScenarioCreator scenarioCreator;
     Node firstNodes[];
 
     public PathCalculatorBean(){
+        scenarioCreator=new ScenarioCreator();
         firstNodes[0]=scenarioCreator.getFirstNode(0);
         firstNodes[1]= scenarioCreator.getFirstNode(1);
     }
@@ -23,30 +24,29 @@ public class PathCalculatorBean implements PathCalculatorLocal {
    }
 */
     @Override
-    public Node getFollowingNode( long lastNodeID, long answerID) {
-    Node lastNode=getNodeWithID(lastNodeID);
-    List<Answer> answers=lastNode.getAnswerList();
-    for(Answer i:answers){
-        if(i.getAnswerID() == answerID){
-            return i.getAnswerNode();
+    public Node getFollowingNode( long lastNodeID, long answerID) throws NodeNotFoundException {
+        Node lastNode=getNodeWithID(lastNodeID);
+        List<Answer> answers=lastNode.getAnswerList();
+        for(Answer i:answers){
+            if(i.getAnswerID() == answerID){
+                return i.getAnswerNode();
+            }
         }
-    }
-    System.out.println("Wrong ID in PathCalculatorBean.getFollowingNode(lastNodeID: "+lastNodeID+", answerID: "+answerID);
-    return  null;
+        throw new NodeNotFoundException("Wrong ID in PathCalculatorBean.getFollowingNode(lastNodeID: "+lastNodeID+", answerID: "+answerID);
     }
 
     @Override
-    public Node getNodeWithID(long searchNodeID) {
+    public Node getNodeWithID(long searchNodeID) throws NodeNotFoundException {
         Node searchScenario0=searchChilrden(firstNodes[0], searchNodeID);
         if(searchScenario0!=null) return searchScenario0;
-       return searchChilrden(firstNodes[1],searchNodeID);
+        return searchChilrden(firstNodes[1],searchNodeID);
 
     }
-    public Node getNodeWithID(long searchNodeID,long scenarioID) {
+    public Node getNodeWithID(long searchNodeID,long scenarioID) throws NodeNotFoundException {
         return searchChilrden(firstNodes[(int) scenarioID],searchNodeID);
     }
-    private Node searchChilrden(Node parentNode, long searchNodeID){
-       List<Answer> answers=parentNode.getAnswerList();
+    private Node searchChilrden(Node parentNode, long searchNodeID)  throws NodeNotFoundException{
+        List<Answer> answers=parentNode.getAnswerList();
         for (Answer i: answers) {
             if(i.getAnswerNode().getID().equals(searchNodeID)) {
                 return i.getAnswerNode();
@@ -56,11 +56,11 @@ public class PathCalculatorBean implements PathCalculatorLocal {
                 if(searchNode!=null)return searchNode;
             }
         }
-        return null;
+        throw new NodeNotFoundException(searchNodeID+ "not in parentNode found");
     }
 
     @Override
-    public Node getStartNodeOfScenario(long scenarioID) {
+    public Node getStartNodeOfScenario(long scenarioID) throws NodeNotFoundException{
         scenarioCreator=new ScenarioCreator();
         return scenarioCreator.getFirstNode(scenarioID);
     }

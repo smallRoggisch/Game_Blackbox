@@ -4,5 +4,6 @@ public enum Messagetype {
     Text,
     Image,
     Voice,
-    Video
+    Video,
+    Servermessage
 }

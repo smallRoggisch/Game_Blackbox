@@ -3,10 +3,11 @@ package gameplay.treeobjects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class NodeMessage {
+public class NodeMessage implements Serializable {
     private static long nodeMessageIdCounter = 0;
     @Id
     private long nodeMessageID;
@@ -49,5 +50,9 @@ public class NodeMessage {
         while(new Date().before(endDate)){
         }
         return;
+    }
+
+    public int getTimeout() {
+        return getTimeout();
     }
 }
